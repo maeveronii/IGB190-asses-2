@@ -4,10 +4,10 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
-using UnityEditor.Playables;
-using UnityEditor.Recorder;
-using UnityEditor.SceneManagement;
 using UnityEngine;
+//using UnityEditor.Playables;
+//using UnityEditor.Recorder;
+//using UnityEditor.SceneManagement;
 using UnityEngine.AI;
 using Random = UnityEngine.Random;
 
