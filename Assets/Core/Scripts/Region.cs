@@ -24,4 +24,29 @@ public class Region : MonoBehaviour
             GameManager.events.OnPlayerEnteredRegion.Invoke(GameManager.player, this, regionName);
         }
     }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (regionName == string.Empty)
+        {
+            Debug.Log($"The Region on {gameObject.name} has not been named. It needs a name to run!");
+        }
+        else if (other.gameObject == GameManager.player.gameObject)
+        {
+            GameManager.events.OnPlayerExitedRegion.Invoke(GameManager.player, this, regionName);
+        }
+    }
+
+    public static Region GetRegionWithName (string regionName)
+    {
+        Region[] regions = GameObject.FindObjectsOfType<Region>();
+        foreach (Region region in regions)
+        {
+            if (region.regionName == regionName)
+            {
+                return region;
+            }
+        }
+        return null;
+    }
 }

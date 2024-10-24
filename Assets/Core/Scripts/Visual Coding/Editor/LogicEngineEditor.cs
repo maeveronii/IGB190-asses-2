@@ -1250,6 +1250,80 @@ public class LogicEngineEditor
             UnitNode.Temp().NoValue(),
             StringNode.Temp("Variable Name")));
 
+        //
+
+        allNodes.Add(GeneralNode.Func<ActionNode>(
+            "Global Variables/Set Global Number Variable",
+            "Set global number variable named $ to $",
+            "SetGlobalNumberVariable",
+            variableIcon,
+            StringNode.Temp("Variable Name"),
+            NumberNode.Value(0)));
+
+        allNodes.Add(GeneralNode.Func<ActionNode>(
+            "Global Variables/Modify Global Number Variable",
+            "Modify global number variable named $ by $",
+            "ModifyGlobalNumberVariable",
+            variableIcon,
+            StringNode.Temp(),
+            NumberNode.Value(0)));
+
+        allNodes.Add(GeneralNode.Func<ActionNode>(
+            "Global Variables/Set Global Bool Variable",
+            "Set global bool variable named $ to $",
+            "SetGlobalBoolVariable",
+            variableIcon,
+            StringNode.Temp("Variable Name"),
+            BoolNode.Value(true)));
+
+        allNodes.Add(GeneralNode.Func<ActionNode>(
+            "Global Variables/Set Global Unit Variable",
+            "Set global unit variable named $ to $",
+            "SetGlobalUnitVariable",
+            variableIcon,
+            StringNode.Temp("Variable Name"),
+            UnitNode.Temp()));
+
+        allNodes.Add(GeneralNode.Func<ActionNode>(
+            "Global Variables/Set Global Vector Variable",
+            "Set global vector variable named $ to $",
+            "SetGlobalVectorVariable",
+            variableIcon,
+            StringNode.Temp(),
+            VectorNode.Temp()));
+
+        allNodes.Add(GeneralNode.Func<ActionNode>(
+            "Global Variables/Set Global String Variable",
+            "Set global string variable named $ to $",
+            "SetGlobalStringVariable",
+            variableIcon,
+            StringNode.Temp(),
+            StringNode.Temp()));
+
+        allNodes.Add(GeneralNode.Func<ActionNode>(
+            "Global Variables/Set Global Unit Group Variable",
+            "Set Global Unit Group named $ to $",
+            "SetGlobalUnitGroupVariable",
+            variableIcon,
+            StringNode.Temp("Variable Name"),
+            UnitGroupNode.Temp().NoValue()));
+
+        allNodes.Add(GeneralNode.Func<ActionNode>(
+            "Global Variables/Add Unit to Global Unit Group Variable",
+            "Add $ to Global Unit Group Named $",
+            "AddToGlobalUnitGroup",
+            variableIcon,
+            UnitNode.Temp().NoValue(),
+            StringNode.Temp("Variable Name")));
+
+        allNodes.Add(GeneralNode.Func<ActionNode>(
+            "Global Variables/Remove Unit from Global Unit Group Variable",
+            "Remove $ from Global Unit Group Named $",
+            "RemoveFromGlobalUnitGroup",
+            variableIcon,
+            UnitNode.Temp().NoValue(),
+            StringNode.Temp("Variable Name")));
+
         #endregion
 
         #region Number Value Nodes
@@ -1392,6 +1466,12 @@ public class LogicEngineEditor
             "GetNumberVariable",
             StringNode.Temp().NoFunction().NoPreset()));
 
+        allNodes.Add(GeneralNode.Func<NumberNode>(
+            "Global Number Variable",
+            "Global Number: $",
+            "GetGlobalNumberVariable",
+            StringNode.Temp().NoFunction().NoPreset()));
+
         #endregion
 
         #region Unit Value Nodes
@@ -1477,6 +1557,12 @@ public class LogicEngineEditor
             "Unit: $",
             "GetUnitVariable",
             StringNode.Temp().NoFunction().NoPreset()));
+
+        allNodes.Add(GeneralNode.Func<UnitNode>(
+            "Global Unit Variable",
+            "Global Unit: $",
+            "GetGlobalUnitVariable",
+            UnitNode.Temp().NoFunction().NoPreset()));
 
         #endregion
 
@@ -1589,6 +1675,14 @@ public class LogicEngineEditor
             UnitNode.Temp().NoValue()));
 
         allNodes.Add(GeneralNode.Func<BoolNode>(
+            "Unit/Unit Has Tag",
+            "$ Has Tag $",
+            "UnitHasTag",
+            conditionIcon,
+            UnitNode.Temp().NoValue(),
+            StringNode.Temp().NoPreset().NoFunction()));
+
+        allNodes.Add(GeneralNode.Func<BoolNode>(
             "Unit/Unit Has Buff",
             "$ has buff labelled $",
             "UnitHasBuff",
@@ -1688,15 +1782,15 @@ public class LogicEngineEditor
             "Region labelled $ exists",
             "RegionExists",
             conditionIcon,
-            StringNode.Temp("Label")));
+            StringNode.Temp("Region Name")));
 
         allNodes.Add(GeneralNode.Func<BoolNode>(
             "Region/Unit Is In Region",
             "$ is in region labelled $",
-            "RegionExists",
+            "UnitIsInRegion",
             conditionIcon,
             UnitNode.Temp().NoValue(),
-            StringNode.Temp("Label")));
+            StringNode.Temp("Region Name")));
 
         allNodes.Add(GeneralNode.Func<BoolNode>(
             "Input/Key is Held",
@@ -1706,13 +1800,13 @@ public class LogicEngineEditor
             StringNode.Temp("Key")));
 
         allNodes.Add(GeneralNode.Func<BoolNode>(
-            "Variable/Bool Variable",
+            "Bool Variable",
             "Bool: $",
             "GetBoolVariable",
             StringNode.Temp().NoFunction().NoPreset()));
 
         allNodes.Add(GeneralNode.Func<BoolNode>(
-            "Variable/Global Bool Variable",
+            "Global Bool Variable",
             "Global Bool: $",
             "GetGlobalBoolVariable",
             StringNode.Temp().NoFunction().NoPreset()));
@@ -1839,10 +1933,16 @@ public class LogicEngineEditor
             VectorNode.Temp()));
 
         allNodes.Add(GeneralNode.Func<VectorNode>(
-            "Variable/Vector Variable",
+            "Vector Variable",
             "Vector: $",
             "GetVectorVariable",
             StringNode.Temp().NoFunction().NoPreset()));
+
+        allNodes.Add(GeneralNode.Func<VectorNode>(
+            "Global Vector Variable",
+            "Global Vector: $",
+            "GetGlobalVectorVariable",
+            VectorNode.Temp().NoFunction().NoPreset()));
 
         #endregion
 
@@ -1915,10 +2015,22 @@ public class LogicEngineEditor
             UnitNode.Temp().NoValue()));
 
         allNodes.Add(GeneralNode.Func<UnitGroupNode>(
+            "Units with Tag",
+            "Units with Tag $",
+            "GetUnitsWithTag",
+            StringNode.Temp().NoPreset().NoFunction()));
+
+        allNodes.Add(GeneralNode.Func<UnitGroupNode>(
             "Unit Group Variable",
             "Unit Group: $",
             "GetUnitGroupVariable",
             StringNode.Temp().NoPreset().NoFunction()));
+
+        allNodes.Add(GeneralNode.Func<UnitGroupNode>(
+            "Global Unit Group Variable",
+            "Global Unit Group: $",
+            "GetGlobalUnitGroupVariable",
+            UnitGroupNode.Temp().NoFunction().NoPreset()));
 
         #endregion
 

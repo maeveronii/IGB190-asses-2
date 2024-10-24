@@ -17,12 +17,12 @@ MonoBehaviour:
     Like a lot. Like more than a normal person. This might be hers.
 
     -Every time
-    any item is picked up, it is replaced with "Trash" with a sell value of ~1000G'
+    any item is picked up remove it, and give 500g to the player.'
   randomStatCount: 0
   itemCost: 2500
   itemIcon: {fileID: 21300000, guid: 650f1490561804c48908af065bc3d1df, type: 3}
   itemType: 1
-  itemRarity: 3
+  itemRarity: 2
   engine:
     scripts:
     - scriptName: Item Equipped
@@ -33,7 +33,7 @@ MonoBehaviour:
       conditionNodes: []
       actionNodes:
       - rid: 297217008877699366
-      - rid: 297217008877699368
+      - rid: 297217231539929096
     - scriptName: Item Unequipped
       scriptUID: 1010639681
       hasWait: 0
@@ -44,6 +44,8 @@ MonoBehaviour:
   template: {fileID: 0}
   guaranteedStats: []
   randomisableStats: []
+  canPurchaseInShop: 1
+  canDropOffMonster: 1
   references:
     version: 2
     RefIds:
@@ -121,16 +123,16 @@ MonoBehaviour:
         allowPreset: 1
         allowFunction: 1
         value: {fileID: 0}
-    - rid: 297217008877699368
+    - rid: 297217231539929096
       type: {class: ActionNode, ns: , asm: Assembly-CSharp}
       data:
         returnType: 2
         tempName: 
-        functionName: AddItem
-        functionDescription: Player/Add Item
-        functionDynamicDescription: Add $ to the player
+        functionName: AddGold
+        functionDescription: Player/Add Gold
+        functionDynamicDescription: Add $ gold to the player
         functionEvaluators:
-        - rid: 297217008877699369
+        - rid: 297217231539929097
         presetName: 
         variableName: 
         stringSuffix: 
@@ -139,11 +141,11 @@ MonoBehaviour:
         allowValue: 1
         allowPreset: 1
         allowFunction: 1
-    - rid: 297217008877699369
-      type: {class: ItemNode, ns: , asm: Assembly-CSharp}
+    - rid: 297217231539929097
+      type: {class: NumberNode, ns: , asm: Assembly-CSharp}
       data:
         returnType: 0
-        tempName: Item
+        tempName: Number
         functionName: 
         functionDescription: 
         functionDynamicDescription: 
@@ -156,4 +158,4 @@ MonoBehaviour:
         allowValue: 1
         allowPreset: 1
         allowFunction: 1
-        value: {fileID: 11400000, guid: d0469920215e5da4b80a3ef80cc06bc9, type: 2}
+        value: 500

@@ -24,7 +24,7 @@ public class Settings
     public KeyCode generatorAbilityKeybind = KeyCode.Mouse0;
     public KeyCode spenderAbilityKeybind = KeyCode.Mouse1;
     public KeyCode abilityOneKeybind = KeyCode.Q;
-    public KeyCode abilityTwoKeybind = KeyCode.T;
+    public KeyCode abilityTwoKeybind = KeyCode.W;
     public KeyCode abilityThreeKeybind = KeyCode.E;
     public KeyCode abilityFourKeybind = KeyCode.R;
     public KeyCode forceMoveKeybind = KeyCode.Space;
@@ -35,7 +35,7 @@ public class Settings
         KeyCode.Mouse0,
         KeyCode.Mouse1,
         KeyCode.Q,
-        KeyCode.T,
+        KeyCode.W,
         KeyCode.E,
         KeyCode.R,
         KeyCode.Space,

@@ -18,7 +18,7 @@ MonoBehaviour:
   itemCost: 750
   itemIcon: {fileID: 21300000, guid: c2a8abde6fd547746952a2a966a7c197, type: 3}
   itemType: 3
-  itemRarity: 1
+  itemRarity: 0
   engine:
     scripts:
     - scriptName: Item Equipped
@@ -58,6 +58,8 @@ MonoBehaviour:
     minimum: 0.15
     maximum: 0.2
     isPercent: 1
+  canPurchaseInShop: 1
+  canDropOffMonster: 1
   references:
     version: 2
     RefIds:

@@ -54,10 +54,6 @@ public class Player : Unit
     private static readonly Color HitDamageTextColor = Color.red;
     private const float CriticalDamageNumberScaleMod = 1.5f;
 
-    // Killer walls
-    public List<Collider> killerWalls;
-    private bool isCollidingWithWall = false;
-
     /// <summary>
     /// Perform initial setup.
     /// </summary>
@@ -70,8 +66,6 @@ public class Player : Unit
         SetupPlayerInventory();
         SetupEquipment();
         SetupSellSlot();
-
-        killerWalls = new List<Collider>();
     }
 
     /// <summary>
@@ -86,35 +80,6 @@ public class Player : Unit
             UpdateTarget();
             HandleMovement();
             HandleRotation();
-        }
-    }
-
-    void OnTriggerEnter(Collider other)
-    {
-        // Check if the collider belongs to a wall
-        if (other.CompareTag("Wall"))
-        {
-            // Add the wall to the list of touching walls if not already present
-            if (!killerWalls.Contains(other))
-            {
-                killerWalls.Add(other);
-            }
-
-            // Check if touching more than one wall
-            if (killerWalls.Count > 1)
-            {
-                health = 0;
-                Kill(this, null, true);
-            }
-        }
-    }
-
-    void OnTriggerExit(Collider other)
-    {
-        // Remove the wall from the list when the player exits the collider
-        if (other.CompareTag("Wall"))
-        {
-            killerWalls.Remove(other);
         }
     }
 
@@ -269,10 +234,6 @@ public class Player : Unit
     /// </summary>
     private void HandleMovement ()
     {
-
-        float horInput = Input.GetAxis("Horizontal");
-        float verInput = Input.GetAxis("Vertical");
-        Vector3 movement = new Vector3(horInput, 0f, verInput);
         // If the player cannot move, 
         if (!CanMove())
         {
@@ -299,16 +260,16 @@ public class Player : Unit
             agentNavigation.SetDestination(targetPosition);
         }
 
-        /*// If left click is not an ability keybind, move as normal.
+        // If left click is not an ability keybind, move as normal.
         else if (leftClickAbility == null && Input.GetMouseButton(LEFT))
         {
-            agentNavigation.SetDestination(targetPosition + movement);
-        }*/
+            agentNavigation.SetDestination(targetPosition);
+        }
 
         // No monster selected, move towards target location.
         else if (Input.GetMouseButton(LEFT) && GameManager.hoveredMonster == null)
         {
-            agentNavigation.SetDestination(targetPosition + movement);
+            agentNavigation.SetDestination(targetPosition);
         }
 
         // Move into range of the target.
@@ -316,12 +277,10 @@ public class Player : Unit
         {
             float range = leftClickAbility.GetAbilityRange(this);
             if (Vector3.Distance(transform.position, targetPosition) > range)
-                agentNavigation.SetDestination(targetPosition + movement);
+                agentNavigation.SetDestination(targetPosition);
             else
                 StopMoving();
         }
-
-
 
         // If no other movement commands are given, stop moving.
         else

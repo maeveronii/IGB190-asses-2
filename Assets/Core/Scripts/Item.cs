@@ -25,12 +25,14 @@ public class Item : ScriptableObject, IEngineHandler
     public List<StatBlock> guaranteedStats = new List<StatBlock>();
     public List<StatBlock> randomisableStats = new List<StatBlock>();
 
+    public bool canPurchaseInShop = true;
+    public bool canDropOffMonster = true;
+
     // The final item stat rolls
     [NonSerialized] public bool hasRolledStats = false;
     [NonSerialized] public List<RolledStatValue> rolledStatValues = new List<RolledStatValue>();
 
     private static Dictionary<ItemRarity, List<Item>> itemLootTable;
-    private static readonly Color trashItemColor = Color.gray;
     private static readonly Color commonItemColor = new Color(0.12f, 1.0f, 0.0f);
     private static readonly Color rareItemColor = Color.yellow;
     private static readonly Color legendaryItemColor = new Color(1.0f, 0.5f, 0.0f);
@@ -42,7 +44,6 @@ public class Item : ScriptableObject, IEngineHandler
     /// </summary>
     public enum ItemRarity
     {
-        Trash,
         Common,
         Rare,
         Legendary
@@ -68,7 +69,6 @@ public class Item : ScriptableObject, IEngineHandler
     {
         return itemRarity switch
         {
-            ItemRarity.Trash => trashItemColor,
             ItemRarity.Common => commonItemColor,
             ItemRarity.Rare => rareItemColor,
             ItemRarity.Legendary => legendaryItemColor,
@@ -122,6 +122,8 @@ public class Item : ScriptableObject, IEngineHandler
         item.itemRarity = itemRarity;
         item.itemCost = itemCost;
         item.randomStatCount = randomStatCount;
+        item.canDropOffMonster = canDropOffMonster;
+        item.canPurchaseInShop = canPurchaseInShop;
         item.guaranteedStats.AddRange(guaranteedStats.ConvertAll(statBlock => statBlock.Copy()));
         item.randomisableStats.AddRange(randomisableStats.ConvertAll(statBlock => statBlock.Copy()));
         item.engine = engine.Copy();
@@ -149,7 +151,7 @@ public class Item : ScriptableObject, IEngineHandler
         {
             foreach (RolledStatValue rolledStat in rolledStatValues)
             {
-                description += $"+{rolledStat.amount * rolledStat.stat.DisplayModifier(rolledStat.isPercent)}";
+                description += $"{(rolledStat.amount > 0 ? "+" : "")}{rolledStat.amount * rolledStat.stat.DisplayModifier(rolledStat.isPercent)}";
                 if (rolledStat.stat.ShowAsPercent(rolledStat.isPercent))
                     description += "%";
                 description += $" {rolledStat.stat.Label()}\n";
@@ -253,7 +255,10 @@ public class Item : ScriptableObject, IEngineHandler
             {
                 itemLootTable.Add(item.itemRarity, new List<Item>());
             }
-            itemLootTable[item.itemRarity].Add(item);
+            if (item.canDropOffMonster)
+            {
+                itemLootTable[item.itemRarity].Add(item);
+            }
         }
     }
 
@@ -276,7 +281,7 @@ public class Item : ScriptableObject, IEngineHandler
     /// <summary>
     /// Rolls for a potential item drop based on the given chances for each rarity.
     /// </summary>
-    public static Item RollForItemDrop(float trashChance = 0.00f, float commonChance = 0.03f, float rareChance = 0.01f, float legendaryChance = 0.005f)
+    public static Item RollForItemDrop(float commonChance = 0.03f, float rareChance = 0.01f, float legendaryChance = 0.005f)
     {
         GenerateLootTable();
         if (Random.value <= legendaryChance)
@@ -285,8 +290,6 @@ public class Item : ScriptableObject, IEngineHandler
             return GetRandomItemOfRarity(ItemRarity.Rare);
         if (Random.value <= commonChance)
             return GetRandomItemOfRarity(ItemRarity.Common);
-        if (Random.value <= trashChance)
-            return GetRandomItemOfRarity(ItemRarity.Trash);
         return null;
     }
 
@@ -297,7 +300,6 @@ public class Item : ScriptableObject, IEngineHandler
     {
         return rarity switch
         {
-            ItemRarity.Trash => trashItemColor,
             ItemRarity.Common => commonItemColor,
             ItemRarity.Rare => rareItemColor,
             ItemRarity.Legendary => legendaryItemColor,

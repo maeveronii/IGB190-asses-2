@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class MonsterSpawnManager : MonoBehaviour
 {
-    public float spawnDensity = 1.5f;
+    public float spawnDensity = 1.0f;
     public List<Monster> monstersToSpawn;
 
     private List<EnemySpawn> unitSpawnCache = new List<EnemySpawn>();

@@ -4,6 +4,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using UnityEditor.Playables;
+using UnityEditor.Recorder;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.AI;
 using Random = UnityEngine.Random;
@@ -99,16 +102,7 @@ public class Unit : Interactable
         // Apply damage modifiers (e.g. a -50% damage taken buff).
         amount *= GetBaseDamageTakenModifier();
 
-        const float randomFactor = 0.05f; //adds randomness to the damage taken
-        amount *= (1 + Random.Range(-randomFactor, randomFactor));
-
-        float armor = stats[Stat.Armor].GetValue(); //reduces damage taken, based on armor
-        float constant = 75f; 
-
-        //Debug.Log("Before Reduction Amount:" + amount);
-        amount = amount * (1 - armor / (armor + constant));
-        //Debug.Log("After Reduction Amount:" + amount);
-        
+        // Armor currently doesn't do anything? Add logic here.
 
         // Return the modified amount.
         return amount;

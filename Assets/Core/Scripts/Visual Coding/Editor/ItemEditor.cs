@@ -210,6 +210,20 @@ public class ItemEditor : EditorWindow
         item.itemDescription = GUI.TextArea(new Rect(posX, posY, width, height = 70), item.itemDescription);
         posY += height;
 
+
+        float boxPadding = 5;
+        Color boxColor = new Color(0.5f, 0.5f, 0.5f, 0.3f);
+        posY += boxPadding;
+
+        
+        EditorGUI.DrawRect(new Rect(posX, posY, width, 50), boxColor);
+        
+        posY += boxPadding;
+        item.canPurchaseInShop = GUI.Toggle(new Rect(posX + boxPadding, posY, width, 22), item.canPurchaseInShop, " Can Purchase in Shop");
+        posY += 20;
+        item.canDropOffMonster = GUI.Toggle(new Rect(posX + boxPadding, posY, width, 22), item.canDropOffMonster, " Can Drop From Monster");
+        posY += 34;
+
         // UI Control: Specify the number of random stats the item should roll.
         GUI.Label(new Rect(posX, posY, width, height = 20), "Random Stats", EditorStyles.boldLabel);
         item.randomStatCount = EditorGUI.IntField(new Rect(posX, posY + height, 100, height), item.randomStatCount);

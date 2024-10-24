@@ -120,11 +120,11 @@ public class LogicEngineManager : MonoBehaviour
             Dictionary<string, object> presets = new Dictionary<string, object>
             {
                 { LogicEngine.PRESET_CASTING_UNIT, arg1 },
-                { LogicEngine.PRESET_ABILITY_CAST, arg2 },
+                { LogicEngine.PRESET_ABILITY_CAST, arg2.template },
                 { LogicEngine.PRESET_TARGET_UNIT, arg3 },
                 { LogicEngine.PRESET_TARGET_POSITION, arg4 }
             };
-            GameManager.logicEngine.TriggerEventOnAllEngines(presets, "UnitStartCast");
+            GameManager.logicEngine.TriggerEventOnAllEngines(presets, "UnitStartCast", arg2.template);
         });
 
         GameManager.events.OnAbilityCastFinished.AddListener((arg1, arg2, arg3, arg4) => {
@@ -135,7 +135,7 @@ public class LogicEngineManager : MonoBehaviour
                 { LogicEngine.PRESET_TARGET_UNIT, arg3 },
                 { LogicEngine.PRESET_TARGET_POSITION, arg4 }
             };
-            GameManager.logicEngine.TriggerEventOnAllEngines(presets, "UnitFinishCast");
+            GameManager.logicEngine.TriggerEventOnAllEngines(presets, "UnitFinishCast", arg2.template);
         });
 
         GameManager.events.OnUnitKilled.AddListener((arg1, arg2, arg3, arg4) => {

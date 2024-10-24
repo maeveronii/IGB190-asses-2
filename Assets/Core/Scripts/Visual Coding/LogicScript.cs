@@ -2,11 +2,10 @@ using MyUtilities;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Diagnostics;
-using static UnityEngine.UI.CanvasScaler;
 using Random = UnityEngine.Random;
 
 [System.Serializable]
@@ -757,6 +756,21 @@ public class LogicScript
         LogicEngine.current.localVariables[name] = value;
     }
 
+    public void SetGlobalUnitGroupVariable(string name, List<Unit> value)
+    {
+        if (name.Length == 0)
+        {
+            Error("The specified variable name was invalid.");
+            return;
+        }
+        if (value == null)
+        {
+            Error("The specified unit group was invalid.");
+            return;
+        }
+        LogicEngine.globalVariables[name] = value;
+    }
+
     public void AddToUnitGroup(Unit unit, string name)
     {
         if (unit == null)
@@ -776,9 +790,48 @@ public class LogicScript
             Error("The specified unit was invalid.");
             return;
         }
+        if (name.Length == 0)
+        {
+            Error("The specified variable name was invalid.");
+            return;
+        }
 
         if (!LogicEngine.current.localVariables.ContainsKey(name)) return;
         ((List<Unit>)LogicEngine.current.localVariables[name]).Remove(unit);
+    }
+
+    public void AddToGlobalUnitGroup(Unit unit, string name)
+    {
+        if (unit == null)
+        {
+            Error("The specified unit was invalid.");
+            return;
+        }
+        if (name.Length == 0)
+        {
+            Error("The specified variable name was invalid.");
+            return;
+        }
+
+        if (!LogicEngine.globalVariables.ContainsKey(name)) return;
+        ((List<Unit>)LogicEngine.globalVariables[name]).Add(unit);
+    }
+
+    public void RemoveFromGlobalUnitGroup(Unit unit, string name)
+    {
+        if (unit == null)
+        {
+            Error("The specified unit was invalid.");
+            return;
+        }
+        if (name.Length == 0)
+        {
+            Error("The specified variable name was invalid.");
+            return;
+        }
+
+        if (!LogicEngine.globalVariables.ContainsKey(name)) return;
+        ((List<Unit>)LogicEngine.globalVariables[name]).Remove(unit);
     }
 
     public void SetBoolVariable(string name, bool value)
@@ -2109,6 +2162,42 @@ public class LogicScript
 
     #region Bool Value Nodes
 
+    public bool RegionExists (string regionName)
+    {
+        Region[] regions = GameObject.FindObjectsOfType<Region>();
+        foreach (Region region in regions)
+        {
+            if (region.regionName == regionName) return true;
+        }
+        return false;
+    }
+
+    public bool UnitIsInRegion (Unit unit, string regionName)
+    {
+        Region region = Region.GetRegionWithName(regionName);
+        if (region == null)
+        {
+            Error("A region with the specified name does not exist.");
+        }
+        if (unit == null)
+        {
+            Error("The specified unit does not exist.");
+        }
+
+        Collider regionCollider = region.GetComponent<Collider>();
+        Collider unitCollider = unit.GetComponent<Collider>();
+        if (regionCollider == null)
+        {
+            Error("The region specified does not have a collider.");
+        }
+        if (unitCollider == null)
+        {
+            Error("The unit specified does not have a collider.");
+        }
+
+        return regionCollider.bounds.Intersects(unitCollider.bounds);
+    }
+
     public bool KeyIsHeld (string keyString)
     {
         foreach (KeyCode key in System.Enum.GetValues(typeof(KeyCode)))
@@ -2444,6 +2533,52 @@ public class LogicScript
         return false;
     }
 
+    public bool UnitHasTag (Unit unit, string tag)
+    {
+        if (unit == null)
+        {
+            Error("The specified unit is invalid.");
+            return false;
+        }
+        return (unit.CompareTag(tag));
+    }
+
+    public bool PlayerHasItemEquipped (Item item)
+    {
+        if (item == null)
+        {
+            Error("The specified item is invalid.");
+            return false;
+        }
+        for (int i = 0; i < GameManager.player.equipment.GetSlots(); i++)
+        {
+            Item slotItem = GameManager.player.equipment.GetItemAtID(i);
+            if (slotItem != null && slotItem.itemName == item.itemName)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public bool PlayerHasItemInInventory (Item item)
+    {
+        if (item == null)
+        {
+            Error("The specified item is invalid.");
+            return false;
+        }
+        for (int i = 0; i < GameManager.player.inventory.GetSlots(); i++)
+        {
+            Item slotItem = GameManager.player.inventory.GetItemAtID(i);
+            if (slotItem != null && slotItem.itemName == item.itemName)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
     #endregion
 
     #region Ability Value Nodes
@@ -2644,6 +2779,11 @@ public class LogicScript
         return (List<Unit>)LogicEngine.current.localVariables.GetValueOrDefault(name, new List<Unit>());
     }
 
+    public List<Unit> GetGlobalUnitGroupVariable(string name)
+    {
+        return (List<Unit>)LogicEngine.globalVariables.GetValueOrDefault(name, "");
+    }
+
     public List<Unit> AllEnemiesInArcFromUnit(float arc, Unit unit, float distance)
     {
         if (unit == null)
@@ -2794,6 +2934,21 @@ public class LogicScript
             returnUnits.Add(u);
         }
         return returnUnits;
+    }
+
+    public List<Unit> GetUnitsWithTag(string tag)
+    {
+        List<Unit> units = new List<Unit>();
+        GameObject[] objs = GameObject.FindGameObjectsWithTag(tag);
+        foreach (GameObject obj in objs)
+        {
+            Unit unit = obj.GetComponent<Unit>();
+            if (unit != null)
+            {
+                units.Add(unit);
+            }
+        }
+        return units;
     }
 
     #endregion
