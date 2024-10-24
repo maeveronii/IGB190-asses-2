@@ -10,65 +10,60 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c1cdd5fc33fd8b841b7c7cd7dff9b881, type: 3}
-  m_Name: Fools Club
+  m_Name: rare armor 1
   m_EditorClassIdentifier: 
-  itemName: Fools Club
+  itemName: rare armor
   itemDescription: 
   randomStatCount: 1
-  itemCost: 750
-  itemIcon: {fileID: 21300000, guid: 7fa0dd80d5a0a324ea4d9a20fc899183, type: 3}
-  itemType: 2
-  itemRarity: 0
+  itemCost: 1450
+  itemIcon: {fileID: 21300000, guid: e06257c2995c8734385304e0bf75528f, type: 3}
+  itemType: 3
+  itemRarity: 1
   engine:
     scripts:
     - scriptName: Item Equipped
-      scriptUID: 1307058508
+      scriptUID: 1904669111
       hasWait: 0
       eventNodes:
-      - rid: 297216941779845154
-      - rid: 297216941779845155
+      - rid: 297217234348277778
       conditionNodes: []
       actionNodes: []
     - scriptName: Item Unequipped
-      scriptUID: 876973180
+      scriptUID: 1126132704
       hasWait: 0
       eventNodes:
-      - rid: 297216941779845157
+      - rid: 297217234348277779
       conditionNodes: []
       actionNodes: []
   template: {fileID: 0}
   guaranteedStats:
-  - stat: 0
-    minimum: 0.05
-    maximum: 0.1
+  - stat: 1
+    minimum: 0.25
+    maximum: 0.3
     isPercent: 1
   randomisableStats:
-  - stat: 0
-    minimum: 0.05
-    maximum: 0.1
+  - stat: 4
+    minimum: 0.15
+    maximum: 0.2
     isPercent: 1
-  - stat: 10
-    minimum: 0.1
-    maximum: 0.12
-    isPercent: 0
-  - stat: 11
-    minimum: 0.25
-    maximum: 0.5
-    isPercent: 0
-  - stat: 3
+  - stat: 6
     minimum: 0.1
     maximum: 0.15
     isPercent: 1
-  - stat: 0
-    minimum: 2
-    maximum: 4
+  - stat: 7
+    minimum: 0.2
+    maximum: 0.25
+    isPercent: 1
+  - stat: 1
+    minimum: 15
+    maximum: 20
     isPercent: 0
   canPurchaseInShop: 1
   canDropOffMonster: 1
   references:
     version: 2
     RefIds:
-    - rid: 297216941779845154
+    - rid: 297217234348277778
       type: {class: EventNode, ns: , asm: Assembly-CSharp}
       data:
         returnType: 2
@@ -86,26 +81,7 @@ MonoBehaviour:
         allowPreset: 1
         allowFunction: 1
         presets: []
-    - rid: 297216941779845155
-      type: {class: EventNode, ns: , asm: Assembly-CSharp}
-      data:
-        returnType: 2
-        tempName: 
-        functionName: OnTimerFinished
-        functionDescription: Time/Do every X Seconds
-        functionDynamicDescription: Every $ seconds
-        functionEvaluators:
-        - rid: 297216941779845158
-        presetName: 
-        variableName: 
-        stringSuffix: 
-        indent: 0
-        nodeIcon: Timer
-        allowValue: 1
-        allowPreset: 1
-        allowFunction: 1
-        presets: []
-    - rid: 297216941779845157
+    - rid: 297217234348277779
       type: {class: EventNode, ns: , asm: Assembly-CSharp}
       data:
         returnType: 2
@@ -123,21 +99,3 @@ MonoBehaviour:
         allowPreset: 1
         allowFunction: 1
         presets: []
-    - rid: 297216941779845158
-      type: {class: NumberNode, ns: , asm: Assembly-CSharp}
-      data:
-        returnType: 0
-        tempName: 
-        functionName: 
-        functionDescription: 
-        functionDynamicDescription: 
-        functionEvaluators: []
-        presetName: 
-        variableName: 
-        stringSuffix: 
-        indent: 0
-        nodeIcon: 
-        allowValue: 1
-        allowPreset: 1
-        allowFunction: 1
-        value: 0.5

@@ -19,7 +19,7 @@ MonoBehaviour:
 
     -Increased speed per enemies within 5m of Player.'
   randomStatCount: 0
-  itemCost: 2500
+  itemCost: 3000
   itemIcon: {fileID: 21300000, guid: e9620576e1fb27a44a1067a25da42233, type: 3}
   itemType: 4
   itemRarity: 2

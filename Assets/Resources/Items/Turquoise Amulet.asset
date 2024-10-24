@@ -38,9 +38,9 @@ MonoBehaviour:
   template: {fileID: 0}
   guaranteedStats:
   - stat: 4
-    minimum: 10
-    maximum: 15
-    isPercent: 0
+    minimum: 0.15
+    maximum: 0.2
+    isPercent: 1
   randomisableStats:
   - stat: 8
     minimum: 0.05

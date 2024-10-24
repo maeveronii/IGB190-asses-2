@@ -19,7 +19,7 @@ MonoBehaviour:
     -Every time
     any item is picked up remove it, and give 500g to the player.'
   randomStatCount: 0
-  itemCost: 2500
+  itemCost: 3000
   itemIcon: {fileID: 21300000, guid: 650f1490561804c48908af065bc3d1df, type: 3}
   itemType: 1
   itemRarity: 2

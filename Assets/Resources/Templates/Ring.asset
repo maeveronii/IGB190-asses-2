@@ -38,6 +38,8 @@ MonoBehaviour:
   template: {fileID: 0}
   guaranteedStats: []
   randomisableStats: []
+  canPurchaseInShop: 1
+  canDropOffMonster: 1
   references:
     version: 2
     RefIds:
