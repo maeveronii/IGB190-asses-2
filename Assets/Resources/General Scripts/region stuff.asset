@@ -102,6 +102,30 @@ MonoBehaviour:
       - rid: 297217231890153491
       - rid: 297217231890153510
       - rid: 297217231890153509
+    - scriptName: bookLore3
+      scriptUID: 2103472698
+      hasWait: 0
+      eventNodes:
+      - rid: 297217231890153717
+      conditionNodes: []
+      actionNodes:
+      - rid: 297217231890153722
+      - rid: 297217231890153725
+      - rid: 297217231890153727
+      - rid: 297217231890153719
+      - rid: 297217231890153721
+    - scriptName: bookLore4
+      scriptUID: 1000652399
+      hasWait: 0
+      eventNodes:
+      - rid: 297217231890153730
+      conditionNodes: []
+      actionNodes:
+      - rid: 297217231890153735
+      - rid: 297217231890153738
+      - rid: 297217231890153740
+      - rid: 297217231890153733
+      - rid: 297217231890153732
   references:
     version: 2
     RefIds:
@@ -1777,7 +1801,8 @@ MonoBehaviour:
         allowValue: 1
         allowPreset: 1
         allowFunction: 1
-        value: '"I have a need. A need to eat. I''m so sorry."'
+        value: '"I''m trapped in here. I feel as if I''ve died, yet I still stand.
+          I have a need. A need to eat. I''m so sorry."'
         options: []
     - rid: 297217231890153490
       type: {class: NumberNode, ns: , asm: Assembly-CSharp}
@@ -2039,3 +2064,487 @@ MonoBehaviour:
         - Common
         - Rare
         - Legendary
+    - rid: 297217231890153717
+      type: {class: EventNode, ns: , asm: Assembly-CSharp}
+      data:
+        returnType: 2
+        tempName: 
+        functionName: UnitEntersRegion
+        functionDescription: Region/Unit enters region
+        functionDynamicDescription: Unit enters region named $
+        functionEvaluators:
+        - rid: 297217231890153718
+        presetName: 
+        variableName: 
+        stringSuffix: 
+        indent: 0
+        nodeIcon: Region
+        allowValue: 1
+        allowPreset: 1
+        allowFunction: 1
+        presets: []
+    - rid: 297217231890153718
+      type: {class: StringNode, ns: , asm: Assembly-CSharp}
+      data:
+        returnType: 0
+        tempName: Region Name
+        functionName: 
+        functionDescription: 
+        functionDynamicDescription: 
+        functionEvaluators: []
+        presetName: 
+        variableName: 
+        stringSuffix: 
+        indent: 0
+        nodeIcon: 
+        allowValue: 1
+        allowPreset: 1
+        allowFunction: 1
+        value: bookLore3
+        options: []
+    - rid: 297217231890153719
+      type: {class: ActionNode, ns: , asm: Assembly-CSharp}
+      data:
+        returnType: 2
+        tempName: 
+        functionName: DestroyRegions
+        functionDescription: Region/Destroy Region
+        functionDynamicDescription: Destroy regions named $
+        functionEvaluators:
+        - rid: 297217231890153720
+        presetName: 
+        variableName: 
+        stringSuffix: 
+        indent: 0
+        nodeIcon: Region
+        allowValue: 1
+        allowPreset: 1
+        allowFunction: 1
+    - rid: 297217231890153720
+      type: {class: StringNode, ns: , asm: Assembly-CSharp}
+      data:
+        returnType: 0
+        tempName: Region Name
+        functionName: 
+        functionDescription: 
+        functionDynamicDescription: 
+        functionEvaluators: []
+        presetName: 
+        variableName: 
+        stringSuffix: 
+        indent: 0
+        nodeIcon: 
+        allowValue: 1
+        allowPreset: 1
+        allowFunction: 1
+        value: bookLore3
+        options: []
+    - rid: 297217231890153721
+      type: {class: ActionNode, ns: , asm: Assembly-CSharp}
+      data:
+        returnType: 2
+        tempName: 
+        functionName: DisableScript
+        functionDescription: Flow/Disable This Script
+        functionDynamicDescription: Disable This Script
+        functionEvaluators: []
+        presetName: 
+        variableName: 
+        stringSuffix: 
+        indent: 0
+        nodeIcon: Cancel
+        allowValue: 1
+        allowPreset: 1
+        allowFunction: 1
+    - rid: 297217231890153722
+      type: {class: ActionNode, ns: , asm: Assembly-CSharp}
+      data:
+        returnType: 2
+        tempName: 
+        functionName: ShowTutorialMessage
+        functionDescription: UI/Show Tutorial Message
+        functionDynamicDescription: Show a tutorial message printing $ for $ seconds
+        functionEvaluators:
+        - rid: 297217231890153723
+        - rid: 297217231890153724
+        presetName: 
+        variableName: 
+        stringSuffix: 
+        indent: 0
+        nodeIcon: UI
+        allowValue: 1
+        allowPreset: 1
+        allowFunction: 1
+    - rid: 297217231890153723
+      type: {class: StringNode, ns: , asm: Assembly-CSharp}
+      data:
+        returnType: 0
+        tempName: Text
+        functionName: 
+        functionDescription: 
+        functionDynamicDescription: 
+        functionEvaluators: []
+        presetName: 
+        variableName: 
+        stringSuffix: 
+        indent: 0
+        nodeIcon: 
+        allowValue: 1
+        allowPreset: 1
+        allowFunction: 1
+        value: '"I''ve been studying the monsters in here, trying to find why this
+          dungeon emenates such immense power"'
+        options: []
+    - rid: 297217231890153724
+      type: {class: NumberNode, ns: , asm: Assembly-CSharp}
+      data:
+        returnType: 0
+        tempName: 
+        functionName: 
+        functionDescription: 
+        functionDynamicDescription: 
+        functionEvaluators: []
+        presetName: 
+        variableName: 
+        stringSuffix: 
+        indent: 0
+        nodeIcon: 
+        allowValue: 1
+        allowPreset: 1
+        allowFunction: 1
+        value: 5
+    - rid: 297217231890153725
+      type: {class: ActionNode, ns: , asm: Assembly-CSharp}
+      data:
+        returnType: 2
+        tempName: 
+        functionName: Wait
+        functionDescription: Flow/Wait
+        functionDynamicDescription: Wait for $ seconds
+        functionEvaluators:
+        - rid: 297217231890153726
+        presetName: 
+        variableName: 
+        stringSuffix: 
+        indent: 0
+        nodeIcon: Timer
+        allowValue: 1
+        allowPreset: 1
+        allowFunction: 1
+    - rid: 297217231890153726
+      type: {class: NumberNode, ns: , asm: Assembly-CSharp}
+      data:
+        returnType: 0
+        tempName: Number
+        functionName: 
+        functionDescription: 
+        functionDynamicDescription: 
+        functionEvaluators: []
+        presetName: 
+        variableName: 
+        stringSuffix: 
+        indent: 0
+        nodeIcon: 
+        allowValue: 1
+        allowPreset: 1
+        allowFunction: 1
+        value: 5
+    - rid: 297217231890153727
+      type: {class: ActionNode, ns: , asm: Assembly-CSharp}
+      data:
+        returnType: 2
+        tempName: 
+        functionName: ShowTutorialMessage
+        functionDescription: UI/Show Tutorial Message
+        functionDynamicDescription: Show a tutorial message printing $ for $ seconds
+        functionEvaluators:
+        - rid: 297217231890153728
+        - rid: 297217231890153729
+        presetName: 
+        variableName: 
+        stringSuffix: 
+        indent: 0
+        nodeIcon: UI
+        allowValue: 1
+        allowPreset: 1
+        allowFunction: 1
+    - rid: 297217231890153728
+      type: {class: StringNode, ns: , asm: Assembly-CSharp}
+      data:
+        returnType: 0
+        tempName: Text
+        functionName: 
+        functionDescription: 
+        functionDynamicDescription: 
+        functionEvaluators: []
+        presetName: 
+        variableName: 
+        stringSuffix: 
+        indent: 0
+        nodeIcon: 
+        allowValue: 1
+        allowPreset: 1
+        allowFunction: 1
+        value: '"Some of my book have gone missing. I''m hearing more and more magic-like
+          sounds from further in. I''m scared."'
+        options: []
+    - rid: 297217231890153729
+      type: {class: NumberNode, ns: , asm: Assembly-CSharp}
+      data:
+        returnType: 0
+        tempName: 
+        functionName: 
+        functionDescription: 
+        functionDynamicDescription: 
+        functionEvaluators: []
+        presetName: 
+        variableName: 
+        stringSuffix: 
+        indent: 0
+        nodeIcon: 
+        allowValue: 1
+        allowPreset: 1
+        allowFunction: 1
+        value: 5
+    - rid: 297217231890153730
+      type: {class: EventNode, ns: , asm: Assembly-CSharp}
+      data:
+        returnType: 2
+        tempName: 
+        functionName: UnitEntersRegion
+        functionDescription: Region/Unit enters region
+        functionDynamicDescription: Unit enters region named $
+        functionEvaluators:
+        - rid: 297217231890153731
+        presetName: 
+        variableName: 
+        stringSuffix: 
+        indent: 0
+        nodeIcon: Region
+        allowValue: 1
+        allowPreset: 1
+        allowFunction: 1
+        presets: []
+    - rid: 297217231890153731
+      type: {class: StringNode, ns: , asm: Assembly-CSharp}
+      data:
+        returnType: 0
+        tempName: Region Name
+        functionName: 
+        functionDescription: 
+        functionDynamicDescription: 
+        functionEvaluators: []
+        presetName: 
+        variableName: 
+        stringSuffix: 
+        indent: 0
+        nodeIcon: 
+        allowValue: 1
+        allowPreset: 1
+        allowFunction: 1
+        value: bookLore4
+        options: []
+    - rid: 297217231890153732
+      type: {class: ActionNode, ns: , asm: Assembly-CSharp}
+      data:
+        returnType: 2
+        tempName: 
+        functionName: DisableScript
+        functionDescription: Flow/Disable This Script
+        functionDynamicDescription: Disable This Script
+        functionEvaluators: []
+        presetName: 
+        variableName: 
+        stringSuffix: 
+        indent: 0
+        nodeIcon: Cancel
+        allowValue: 1
+        allowPreset: 1
+        allowFunction: 1
+    - rid: 297217231890153733
+      type: {class: ActionNode, ns: , asm: Assembly-CSharp}
+      data:
+        returnType: 2
+        tempName: 
+        functionName: DestroyRegions
+        functionDescription: Region/Destroy Region
+        functionDynamicDescription: Destroy regions named $
+        functionEvaluators:
+        - rid: 297217231890153734
+        presetName: 
+        variableName: 
+        stringSuffix: 
+        indent: 0
+        nodeIcon: Region
+        allowValue: 1
+        allowPreset: 1
+        allowFunction: 1
+    - rid: 297217231890153734
+      type: {class: StringNode, ns: , asm: Assembly-CSharp}
+      data:
+        returnType: 0
+        tempName: Region Name
+        functionName: 
+        functionDescription: 
+        functionDynamicDescription: 
+        functionEvaluators: []
+        presetName: 
+        variableName: 
+        stringSuffix: 
+        indent: 0
+        nodeIcon: 
+        allowValue: 1
+        allowPreset: 1
+        allowFunction: 1
+        value: bookLore4
+        options: []
+    - rid: 297217231890153735
+      type: {class: ActionNode, ns: , asm: Assembly-CSharp}
+      data:
+        returnType: 2
+        tempName: 
+        functionName: ShowTutorialMessage
+        functionDescription: UI/Show Tutorial Message
+        functionDynamicDescription: Show a tutorial message printing $ for $ seconds
+        functionEvaluators:
+        - rid: 297217231890153736
+        - rid: 297217231890153737
+        presetName: 
+        variableName: 
+        stringSuffix: 
+        indent: 0
+        nodeIcon: UI
+        allowValue: 1
+        allowPreset: 1
+        allowFunction: 1
+    - rid: 297217231890153736
+      type: {class: StringNode, ns: , asm: Assembly-CSharp}
+      data:
+        returnType: 0
+        tempName: Text
+        functionName: 
+        functionDescription: 
+        functionDynamicDescription: 
+        functionEvaluators: []
+        presetName: 
+        variableName: 
+        stringSuffix: 
+        indent: 0
+        nodeIcon: 
+        allowValue: 1
+        allowPreset: 1
+        allowFunction: 1
+        value: '"I feel the dungeon calling me in further... I keep seeing my notes
+          in my head but... they''re wrong; strange"'
+        options: []
+    - rid: 297217231890153737
+      type: {class: NumberNode, ns: , asm: Assembly-CSharp}
+      data:
+        returnType: 0
+        tempName: 
+        functionName: 
+        functionDescription: 
+        functionDynamicDescription: 
+        functionEvaluators: []
+        presetName: 
+        variableName: 
+        stringSuffix: 
+        indent: 0
+        nodeIcon: 
+        allowValue: 1
+        allowPreset: 1
+        allowFunction: 1
+        value: 5
+    - rid: 297217231890153738
+      type: {class: ActionNode, ns: , asm: Assembly-CSharp}
+      data:
+        returnType: 2
+        tempName: 
+        functionName: Wait
+        functionDescription: Flow/Wait
+        functionDynamicDescription: Wait for $ seconds
+        functionEvaluators:
+        - rid: 297217231890153739
+        presetName: 
+        variableName: 
+        stringSuffix: 
+        indent: 0
+        nodeIcon: Timer
+        allowValue: 1
+        allowPreset: 1
+        allowFunction: 1
+    - rid: 297217231890153739
+      type: {class: NumberNode, ns: , asm: Assembly-CSharp}
+      data:
+        returnType: 0
+        tempName: Number
+        functionName: 
+        functionDescription: 
+        functionDynamicDescription: 
+        functionEvaluators: []
+        presetName: 
+        variableName: 
+        stringSuffix: 
+        indent: 0
+        nodeIcon: 
+        allowValue: 1
+        allowPreset: 1
+        allowFunction: 1
+        value: 5
+    - rid: 297217231890153740
+      type: {class: ActionNode, ns: , asm: Assembly-CSharp}
+      data:
+        returnType: 2
+        tempName: 
+        functionName: ShowTutorialMessage
+        functionDescription: UI/Show Tutorial Message
+        functionDynamicDescription: Show a tutorial message printing $ for $ seconds
+        functionEvaluators:
+        - rid: 297217231890153741
+        - rid: 297217231890153742
+        presetName: 
+        variableName: 
+        stringSuffix: 
+        indent: 0
+        nodeIcon: UI
+        allowValue: 1
+        allowPreset: 1
+        allowFunction: 1
+    - rid: 297217231890153741
+      type: {class: StringNode, ns: , asm: Assembly-CSharp}
+      data:
+        returnType: 0
+        tempName: Text
+        functionName: 
+        functionDescription: 
+        functionDynamicDescription: 
+        functionEvaluators: []
+        presetName: 
+        variableName: 
+        stringSuffix: 
+        indent: 0
+        nodeIcon: 
+        allowValue: 1
+        allowPreset: 1
+        allowFunction: 1
+        value: '"I''m seeing ideas of new spells, raising the dead from the ground.
+          Maybe there IS something hiding in this dungeon...""'
+        options: []
+    - rid: 297217231890153742
+      type: {class: NumberNode, ns: , asm: Assembly-CSharp}
+      data:
+        returnType: 0
+        tempName: 
+        functionName: 
+        functionDescription: 
+        functionDynamicDescription: 
+        functionEvaluators: []
+        presetName: 
+        variableName: 
+        stringSuffix: 
+        indent: 0
+        nodeIcon: 
+        allowValue: 1
+        allowPreset: 1
+        allowFunction: 1
+        value: 5
