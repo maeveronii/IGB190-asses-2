@@ -15,7 +15,7 @@ MonoBehaviour:
   itemName: rare boots
   itemDescription: 
   randomStatCount: 1
-  itemCost: 500
+  itemCost: 1250
   itemIcon: {fileID: 21300000, guid: 0e92c4172a174484789fe64de1d037ef, type: 3}
   itemType: 4
   itemRarity: 1
@@ -38,8 +38,8 @@ MonoBehaviour:
   template: {fileID: 0}
   guaranteedStats:
   - stat: 6
-    minimum: 0.25
-    maximum: 0.3
+    minimum: 0.15
+    maximum: 0.2
     isPercent: 1
   randomisableStats:
   - stat: 1
