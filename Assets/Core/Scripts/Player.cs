@@ -443,7 +443,7 @@ public class Player : Unit
             stats[Stat.CriticalStrikeChance].ModifyBaseValue(bonusCriticalChancePerLevel);
             stats[Stat.CriticalStrikeDamage].ModifyBaseValue(bonusCriticalDamagePerLevel);
             baseHealthRegen += bonusHealthRegenPerLevel;
-            baseResourceRegen += bonusResourcePerLevel;
+            baseResourceRegen += bonusResourceRegenPerLevel;
         }
     }
 
