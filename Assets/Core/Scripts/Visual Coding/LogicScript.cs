@@ -2174,28 +2174,25 @@ public class LogicScript
 
     public bool UnitIsInRegion (Unit unit, string regionName)
     {
-        Region region = Region.GetRegionWithName(regionName);
-        if (region == null)
-        {
-            Error("A region with the specified name does not exist.");
-        }
         if (unit == null)
         {
             Error("The specified unit does not exist.");
         }
-
-        Collider regionCollider = region.GetComponent<Collider>();
-        Collider unitCollider = unit.GetComponent<Collider>();
-        if (regionCollider == null)
+        List<Region> regions = Region.GetRegionsWithName(regionName);
+        foreach (Region region in regions)
         {
-            Error("The region specified does not have a collider.");
+            Collider regionCollider = region.GetComponent<Collider>();
+            Collider unitCollider = unit.GetComponent<Collider>();
+            if (regionCollider == null)
+            {
+                Error("The region specified does not have a collider.");
+            }
+            if (regionCollider.bounds.Intersects(unitCollider.bounds))
+            {
+                return true;
+            }
         }
-        if (unitCollider == null)
-        {
-            Error("The unit specified does not have a collider.");
-        }
-
-        return regionCollider.bounds.Intersects(unitCollider.bounds);
+        return false;
     }
 
     public bool KeyIsHeld (string keyString)

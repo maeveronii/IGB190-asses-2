@@ -1416,7 +1416,7 @@ MonoBehaviour:
         allowValue: 1
         allowPreset: 1
         allowFunction: 1
-        value: 0.1
+        value: 0.25
     - rid: 297217231539929090
       type: {class: BoolNode, ns: , asm: Assembly-CSharp}
       data:
@@ -3039,7 +3039,7 @@ MonoBehaviour:
         allowValue: 1
         allowPreset: 1
         allowFunction: 1
-        value: 25
+        value: 15
     - rid: 297217302733783121
       type: {class: UnitNode, ns: , asm: Assembly-CSharp}
       data:

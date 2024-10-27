@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
@@ -48,5 +49,19 @@ public class Region : MonoBehaviour
             }
         }
         return null;
+    }
+
+    public static List<Region> GetRegionsWithName(string regionName)
+    {
+        List<Region> matchingRegions = new List<Region>();
+        Region[] regions = GameObject.FindObjectsOfType<Region>();
+        foreach (Region region in regions)
+        {
+            if (region.regionName == regionName)
+            {
+                matchingRegions.Add(region);
+            }
+        }
+        return matchingRegions;
     }
 }
