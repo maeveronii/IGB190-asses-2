@@ -22,12 +22,69 @@ MonoBehaviour:
       conditionNodes:
       - rid: 4184214666226172888
       actionNodes:
+      - rid: 4184214666226172891
+      - rid: 297217302733783056
       - rid: 4184214666226172889
       - rid: 4184214666226172890
-      - rid: 4184214666226172891
   references:
     version: 2
     RefIds:
+    - rid: 297217302733783056
+      type: {class: ActionNode, ns: , asm: Assembly-CSharp}
+      data:
+        returnType: 2
+        tempName: 
+        functionName: ShowTutorialMessage
+        functionDescription: UI/Show Tutorial Message
+        functionDynamicDescription: Show a tutorial message printing $ for $ seconds
+        functionEvaluators:
+        - rid: 297217302733783057
+        - rid: 297217302733783058
+        presetName: 
+        variableName: 
+        stringSuffix: 
+        indent: 0
+        nodeIcon: UI
+        allowValue: 1
+        allowPreset: 1
+        allowFunction: 1
+    - rid: 297217302733783057
+      type: {class: StringNode, ns: , asm: Assembly-CSharp}
+      data:
+        returnType: 0
+        tempName: Text
+        functionName: 
+        functionDescription: 
+        functionDynamicDescription: 
+        functionEvaluators: []
+        presetName: 
+        variableName: 
+        stringSuffix: 
+        indent: 0
+        nodeIcon: 
+        allowValue: 1
+        allowPreset: 1
+        allowFunction: 1
+        value: Congratulations!
+        options: []
+    - rid: 297217302733783058
+      type: {class: NumberNode, ns: , asm: Assembly-CSharp}
+      data:
+        returnType: 0
+        tempName: 
+        functionName: 
+        functionDescription: 
+        functionDynamicDescription: 
+        functionEvaluators: []
+        presetName: 
+        variableName: 
+        stringSuffix: 
+        indent: 0
+        nodeIcon: 
+        allowValue: 1
+        allowPreset: 1
+        allowFunction: 1
+        value: 5
     - rid: 4184214666226172887
       type: {class: EventNode, ns: , asm: Assembly-CSharp}
       data:
@@ -196,7 +253,7 @@ MonoBehaviour:
         allowValue: 1
         allowPreset: 1
         allowFunction: 1
-        value: Explore the Temple
+        value: Defeat the Darkness
         options: []
     - rid: 4184214666413867032
       type: {class: NumberNode, ns: , asm: Assembly-CSharp}

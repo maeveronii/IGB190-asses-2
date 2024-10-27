@@ -5,7 +5,7 @@ public class WallMovement
 {
     public GameObject wall; // The wall GameObject to move
     public Vector3 moveDirection = Vector3.right; // Direction to move the wall
-    public float moveSpeed = 5f; // Speed at which the wall will move
+    public float moveSpeed = 20f; // Speed at which the wall will move
     public float moveDistance = 5f; // Distance to move the wall
     [HideInInspector] public Vector3 targetPosition; // The target position for the wall
 }
